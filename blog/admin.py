@@ -10,30 +10,35 @@ class PostCategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Post)
-class PostAdmin(admin.HodelAdmin):
-    list_display = (
+class PostAdmin(admin.ModelAdmin):
+    list_display = (#mise en forme affichage de la liste
         'title',
         'category',
         'published',
         'created_at',
-        'comment_count'
+        'comments_count'
     )
 
     list_filter = (
-    'category__name',
-    'published',
-)
+        'category__name',
+        'published',
+    )
 
     autocomplete_fields = ['category']
     formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={'rows': 20, 'cols': 90})},
-}
+    }
 
-def comments_count(self, obj):
+    def comments_count(self,obj):
+        return Comment.objects.filter(post=obj).count()
+    comments_count.short_description = 'Comments'
 
 
-    return Comment.objects.filter(post=obj).count()
-comments_count.short_description = 'Comments'
 
 # python manage.py createsupperuser
 # python manage.py runserver
+
+#Adm1n_adm1n_123
+#Adm1n_321
+
+
