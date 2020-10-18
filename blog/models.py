@@ -2,11 +2,10 @@ from django.db import models
 
 
 class PostCategory(models.Model):
-    name = models.CharField(max_length=56)
+    name = models.CharField(max_length=50)
 
-
-def __str__(self):
-    return self.name
+    def __str__(self):
+        return self.name
 
 
 class Post(models.Model):
@@ -21,8 +20,8 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True,null=True)
 
 
-def __str__(self):
-    return self.title
+    def __str__(self):
+        return self.title
 
 
 class Comment(models.Model):
