@@ -49,7 +49,7 @@ class Comment(models.Model):
 
 
     def __str__(self):
-        return '{} - {} (status={})'.format(self.author.name, self.text[:20].self.status)
+        return '{} - {} (status={})'.format(self.author_name, self.text[:20],self.status)
 
 
 #Puis python manage.py makemigrations

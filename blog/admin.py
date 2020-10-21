@@ -33,6 +33,23 @@ class PostAdmin(admin.ModelAdmin):
         return Comment.objects.filter(post=obj).count()
     comments_count.short_description = 'Comments'
 
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+
+    search_fields = ['post__title','author_name',]
+
+    list_display = (
+        'post',
+        'author_name',
+        'status',
+        'moderation_text',
+        'created_at',
+        'text'
+    )
+    list_editable = ('status','moderation_text')
+
+    list_filter = ('status',)
+
 
 
 # python manage.py createsupperuser
