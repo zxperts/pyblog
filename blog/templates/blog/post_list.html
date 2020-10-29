@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} POST {% endblock %}
+
+{% block content %}
+
+<div class="col-sm9">
+    {% for post in posts %}
+    <div>
+        <h3><a href="#">{{post.title}}</a> </h3>
+        <small>Posted on {{ post.created_at}}</small>
+        <hr>
+        <p class="text-muted">
+            {{ post.text|linebreaks|safe|truncatewords:100 }}
+            <a href="#">[Read More]</a>
+
+        </p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
