@@ -7,14 +7,15 @@
 <div class="col-sm-9">
     {% for post in posts %}
     <div>
-        <h3><a href="#">{{post.title}}</a></h3>
+        <h3><a href="{% url 'post_detail' post.pk %}">{{post.title}}</a></h3>
         <small>Posted on {{ post.created_at}}</small>
         <hr>
         <p class="text-muted">
             {{ post.text|linebreaks|safe|truncatewords:100 }}
-            <a href="{% url 'post_list' post.category.slug %}" class="badge badge-info">
-                {{ post.category.name|capfirst }}</a>
+            <a href="{% url 'post_detail' post.pk %}">[Read More]</a>
         </p>
+        <a href="{% url 'post_list' post.category.slug %}" class="badge badge-info">
+            {{ post.category.name|capfirst }}</a>
     </div>
     {% empty %}
     <div class="text-center">

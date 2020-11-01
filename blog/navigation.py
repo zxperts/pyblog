@@ -4,7 +4,6 @@ NAV_POSTS = 'posts'
 
 NAV_ITEMS = (
     (NAV_POSTS, reverse_lazy('home')),
-    ('posts2', reverse_lazy('home')),
 
 )
 
