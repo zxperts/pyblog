@@ -19,7 +19,6 @@
 
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav mr-auto">
-                {{ navigation_items }}
                 {% for item in navigation_items %}
                 <li class="nav-item {% if item.active %}active{% endif %}">
                     <a class="nav-link" href="{{ item.url }}">{{ item.name }}</a>

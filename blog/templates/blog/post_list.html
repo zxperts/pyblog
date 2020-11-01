@@ -31,7 +31,6 @@
 <div class="col-sm-3">
     <h5>Categories</h5>
     <ul class="list-unstyled">
-        {{ navigation_items }}
         {% for cat in categories %}
         <li>
             <a href="{% url 'post_list' cat.slug %}"
