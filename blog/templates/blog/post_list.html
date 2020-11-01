@@ -7,7 +7,7 @@
 <div class="col-sm-9">
     {% for post in posts %}
     <div>
-        <h3><a href="#">{{post.title}}</a> </h3>
+        <h3><a href="#">{{post.title}}</a></h3>
         <small>Posted on {{ post.created_at}}</small>
         <hr>
         <p class="text-muted">
@@ -31,14 +31,15 @@
 <div class="col-sm-3">
     <h5>Categories</h5>
     <ul class="list-unstyled">
-    {% for cat in categories %}
+        {{ navigation_items }}
+        {% for cat in categories %}
         <li>
             <a href="{% url 'post_list' cat.slug %}"
                class="badge badge-secondary">
                 {{ cat.name|capfirst }}
             </a>
         </li>
-    {% endfor %}
+        {% endfor %}
     </ul>
 </div>
 
