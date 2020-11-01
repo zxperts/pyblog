@@ -12,10 +12,19 @@
         <hr>
         <p class="text-muted">
             {{ post.text|linebreaks|safe|truncatewords:100 }}
-            <a href="#">[Read More]</a>
-
+            <a href="{% url 'post_list' post.category.slug %}" class="badge badge-info">
+                {{ post.category.name|capfirst }}</a>
         </p>
     </div>
+    {% empty %}
+    <div class="text-center">
+        <p class="display-1">:-(</p>
+        <h3>
+            Sorry, there is no post for this category
+            <span class="badge badge-info">{{category.name}}</span>
+        </h3>
+    </div>
+
     {% endfor %}
 </div>
 
