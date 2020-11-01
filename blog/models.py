@@ -39,7 +39,8 @@ class Comment(models.Model):
         (STATUS_MODERATED, 'moderated')
     )
 
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE,
+                             related_name='comments')
     author_name = models.CharField(max_length=100)
     text = models.TextField()
 

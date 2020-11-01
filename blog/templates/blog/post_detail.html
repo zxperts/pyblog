@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block title %} {{ post.title }} {% endblock %}
@@ -15,7 +16,37 @@
         <a href="{% url 'post_list' post.category.slug %}"
            class="badge badge-info">{{ post.category.name|capfirst }}</a>
     </div>
+
+    <div class="mt-3">
+        <h3>Comments</h3>
+        <ul class="list-unstyled">
+            {% for comment in comments %}
+            <li class="media">
+                <img class="mr-3" src="{% static 'img/user-placeholder.png' %}">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">{{ comment.author.name }}</h5>
+                    <p>
+                        <small class="text-muted">{{ comment.created_at }}</small>
+                    </p>
+                    <p>
+                        {% if comment.status == 'moderated' %}
+                        <span class="font-weight-light font-italic text-muted">
+                        [[Moderated comment: {{ comment.moderation_text }}]]
+                    </span>
+                        {% else %}
+                        {{ comment.text }}
+                        {% endif %}
+                    </p>
+                </div>
+            </li>
+            {% empty %}
+            <li class="media">No comment yet</li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
+
+
 <div class="col-sm-3">
     <h5>Post from the same category</h5>
     <ul class="list-group">
