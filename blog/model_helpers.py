@@ -17,3 +17,8 @@ def get_category_and_posts(category_name):
 
     posts=posts.order_by('-created_at')
     return category, posts
+
+def get_category():
+    categories=list(PostCategory.objects.all().order_by('name'))
+    categories.insert(0,post_category_all)
+    return categories
