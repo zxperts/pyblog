@@ -16,5 +16,20 @@
            class="badge badge-info">{{ post.category.name|capfirst }}</a>
     </div>
 </div>
+<div class="col-sm-3">
+    <h5>Post from the same category</h5>
+    <ul class="list-group">
+        {% for post in post_same_category %}
+        <li class="list-group-item">
+            <a href="{% url 'post_detail' post.pk %}">
+                {{ post.title|truncatewords:4 }}
+            </a>
+        </li>
+        {% empty %}
+        This is the only post for this category
+        {% endfor %}
+    </ul>
+
+</div>
 
 {% endblock content %}
