@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} POST {% endblock %}
+
+{% block content %}
+
+<h1>
+    {{ user.username }}
+    <hr>
+    <img class="mr-3" src="{% static 'img/user-placeholder.png' %}">
+</h1>
+
+
+{% endblock content %}
