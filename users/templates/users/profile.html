@@ -6,8 +6,10 @@
 
 <h1>
     {{ user.username }}
+    {{ user.profile.image.url }}
     <hr>
     <img class="mr-3" src="{% static 'img/user-placeholder.png' %}">
+    <img src="{{ user.profile.image.url  }}">
 </h1>
 
 
